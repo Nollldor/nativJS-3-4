@@ -110,6 +110,30 @@ counterObj.decrease() //-1*/
 // P.S. типизируйте только аргументы, а при вызове функции используйте @ts-ignore
 
 
+/*function sum(n: number) {
+
+    let currentArray: number[] = [];
+    let counter = 0
+    let currentSum : number = 0
+    function f(...args: number[]) {
+        currentArray = [...currentArray,...args]
+            counter += args.length
+            return f;
+    }
+
+    f.toString = function() {
+        for (let x in currentArray) {
+            currentSum += +x
+        }
+        return currentSum
+    }
+
+    return f
+}
+
+alert(sum(3)(2,5)(3)(2,3))*/
+
+
 // Task 05
 // решить все задачи по рекурсии которые даны в конце статьи https://learn.javascript.ru/recursion
 
