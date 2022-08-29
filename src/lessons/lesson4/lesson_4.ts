@@ -8,18 +8,31 @@ console.log('lesson 4');
 // Создайте промис, который постоянно находиться в состоянии pending.
 // В конструкторе промиса выведите в консоль сообщение "Promise is created".
 
+let promise = new Promise((resolve, reject)=> {
+    console.log("Promise is created")
+})
 
 // Task 02
 // Создайте промис, который после создания сразу же переходит в состояние resolve
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+let promise2 = new Promise((res,rej)=>{res('Promise Data')})
+
+promise2.then((result)=>{
+    console.log(result)
+})
 
 // Task 03
 // Создайте промис, который после создания сразу же переходит в состояние rejected
 // и возвращает строку 'Promise Error'
 // Получите данные промиса и выведите их в консоль
 
+let promise3 = new Promise((res,rej)=>{rej('Promise Error')})
+
+promise3.catch((err)=>{
+    console.log(err)
+})
 
 // Task 04
 // Создайте промис, который переходит в состояние resolved через 3с.
@@ -27,6 +40,11 @@ console.log('lesson 4');
 // и возвращает строку 'Promise Data'
 // Получите данные промиса и выведите их в консоль
 
+let promise4 = new Promise((res,rej)=> {
+    setTimeout(()=>res('Promise Data'),3000)
+})
+
+promise4.then(result=> {console.log(result)})
 
 // Task 05
 // Создайте литерал объекта handlePromise со следующими свойствами:
@@ -41,6 +59,31 @@ console.log('lesson 4');
 // свойства resolve и reject получают ссылки на соответствующие функции
 // resolve и reject. Следующие два обработчика запускают методы resolve и reject.
 
+/*let handlePromise = {
+    promise: null,
+    resolve: null,
+    reject: null,
+    onSuccess: (paramName: any) => `Promise is resolved with data: ${paramName}`,
+    onError: (paramName: any) => `Promise is rejected with error: ${paramName}`
+}
+
+const createBtn = document.getElementById('btn-create-promise')
+const resBtn = document.getElementById('btn-resolve-promise')
+const rejBtn = document.getElementById('btn-reject-promise')
+
+const createPromise = () => {
+    // @ts-ignore
+    handlePromise.promise = new Promise((res, rej)=>{
+
+    })
+}
+const resolvePromise = () => {}
+const rejectPromise = () => {}
+
+
+createBtn && createBtn.addEventListener("click", createPromise)
+resBtn && resBtn.addEventListener("click", resolvePromise)
+rejBtn && rejBtn.addEventListener("click", rejectPromise)*/
 
 // Task 06
 // Создайте промис, который через 1 с возвращает строку "My name is".
@@ -50,12 +93,69 @@ console.log('lesson 4');
 // Добавьте два метода then и передайте созданные функции.
 
 
+/*const promise6 = new Promise((res, rej)=> {
+    setTimeout(()=>{
+        res("My name is")
+    }, 1000)
+})
+// @ts-ignore
+const onSuccess = (param) => {
+    return param + " " + "Arthur"
+}
+// @ts-ignore
+const print = (param) => {
+    console.log(param)
+}
+
+promise6
+    .then(onSuccess)
+    .then(print)*/
+
 // Task 7
 // Создайте три промиса. Первый промис возвращает объект { name: "Anna" } через 2с,
 // второй промис возвращает объект {age: 16} через 3 с, а третий {city: ''} через 4с.
 // Получите результаты работы промисов, объедините свойства объектов
 // и выведите в консоль {name, age, city}
 
+const promise71 = new Promise((res, rej)=>{
+    setTimeout(()=>{
+        res({name: "Anna"})
+    }, 2000)
+})
+
+const promise72 = new Promise((res, rej)=>{
+    setTimeout(()=>{
+        res({age: 16})
+    }, 3000)
+})
+
+
+const promise73 = new Promise((res, rej)=>{
+    setTimeout(()=>{
+        res({city: ''})
+    }, 4000)
+})
+
+const result7 = {
+    name: "",
+    age: 0,
+    city: ""
+}
+
+promise71.then((result)=>{
+    // @ts-ignore
+    result7.name = result.name
+})
+promise72.then((result)=>{
+    // @ts-ignore
+    result7.age = result.age
+})
+
+promise73.then((result)=>{
+    // @ts-ignore
+    result7.city = result.city
+    console.log(result7)
+})
 
 
 // just a plug
